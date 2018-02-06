@@ -1,0 +1,6 @@
+(jbuild_version 1)
+
+(library
+ ((name toolkit)
+  (preprocess (pps (js_of_ocaml-ppx)))
+  (libraries (js_of_ocaml))))

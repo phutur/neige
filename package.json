@@ -1,0 +1,31 @@
+{
+  "name": "neige",
+  "version": "0.0.1",
+  "description": "desc",
+  "main": "_dist/backend_neige.bc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phutur/neige.git"
+  },
+  "keywords": [
+    "browser",
+    "elm",
+    "ocaml",
+    "web"
+  ],
+  "author": "phutur",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/phutur/neige/issues"
+  },
+  "homepage": "https://github.com/phutur/neige#readme",
+  "devDependencies": {
+    "electron": "^1.8.2",
+    "electron-packager": "^11.0.0",
+    "electron-prebuilt": "^1.4.13",
+    "elm": "^0.18.0"
+  }
+}
