@@ -18,3 +18,12 @@ _build/
 # oasis generated files
 setup.data
 setup.log
+
+.merlin
+
+node_modules
+elm-stuff
+_dist
+neige-darwin-x64*
+.DS_Store
+neige.install
