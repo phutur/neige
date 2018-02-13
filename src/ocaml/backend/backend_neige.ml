@@ -13,8 +13,11 @@ module Neige = Plumbing.Make.Simple(
       ; height = 720
       ; frame = true
       ; resizable = true
+      ; autoHideMenuBar = false
+      ; titleBarStyle = None
       ; minWidth = None
       ; minHeight = None
+      ; icon = None
       }
   end
   )

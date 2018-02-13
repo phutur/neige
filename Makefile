@@ -7,7 +7,17 @@ dist=_dist
 
 all: build
 
-build: init_dist backend frontend fetch_css
+build: dark init_dist backend frontend fetch_css
+	@tput setaf 6
+	@echo "neige is built"
+	@tput sgr0
+
+watch: build
+	make run &
+	while true; do \
+		fswatch -r -1 src/; \
+		make build; \
+	done
 
 run: backend
 	$(bin)/electron $(dist)/backend_neige.bc.js
@@ -51,3 +61,6 @@ clean:
 	rm -rf neige-darwin-x64
 	rm -rf *.tar.gz
 	opam pin remove -y .
+
+dark:
+	@tput setaf 0

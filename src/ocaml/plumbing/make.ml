@@ -7,6 +7,9 @@ type props = {
 ; height: int
 ; frame: bool
 ; resizable: bool
+; autoHideMenuBar: bool
+; titleBarStyle: string option
+; icon: string option
 ; minWidth: int option
 ; minHeight: int option
 }
@@ -38,15 +41,20 @@ struct
   let app = electron##.app
   let main_window = ref Js.null
 
-  let from_props props =
-    object%js
-      val width = props.width
-      val height = props.height
-      val frame = props.frame
-      val resizable = props.resizable
-      val minWidth = Js.Optdef.option props.minWidth
-      val minHeight = Js.Optdef.option props.minHeight
-    end
+  let from_props : props -> BrowserWindow.props Js.t =
+    function props ->
+      let f = Toolkit.Option.map (Js.string) in
+      object%js
+        val width = props.width
+        val height = props.height
+        val frame = Js.bool  props.frame
+        val resizable = Js.bool props.resizable
+        val minWidth = Js.Optdef.option props.minWidth
+        val minHeight = Js.Optdef.option props.minHeight
+        val icon = Js.Optdef.option props.icon
+        val titleBarStyle = Js.Optdef.option (f props.titleBarStyle)
+        val autoHideMenuBar = Js.bool props.autoHideMenuBar
+      end
 
   let attach_callback name f =
     app ## on (Js.string name) (fun () -> f electron app main_window)
