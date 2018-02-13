@@ -1,3 +1,8 @@
+(** Electron requirement
+ * /!\ This module could be extended, actually, the binding fit
+ * only with our need.
+*)
+
 open Js
 
 class type t = object

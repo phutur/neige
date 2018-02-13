@@ -9,6 +9,9 @@ type props = {
 ; height: int
 ; frame: bool
 ; resizable: bool
+; autoHideMenuBar: bool
+; titleBarStyle: string option
+; icon: string option
 ; minWidth: int option
 ; minHeight: int option
 }
@@ -23,9 +26,9 @@ end
 module type FULL_REQUIREMENT =
 sig
   include REQUIREMENT
-  val on_ready : (electron -> app -> main_window -> unit)
-  val on_closed : (electron -> app -> main_window -> unit)
-  val on_all_closed : (electron -> app -> main_window -> unit)
+  val on_ready : electron -> app -> main_window -> unit
+  val on_closed : electron -> app -> main_window -> unit
+  val on_all_closed : electron -> app -> main_window -> unit
 end
 
 module type MAKER =

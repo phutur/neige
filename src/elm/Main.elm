@@ -1,58 +1,25 @@
-module Main exposing (..)
+module Main exposing (main)
 
-import Port
+import Message exposing (Message(..))
+import Model exposing (Flags, Model)
+import View
 import Html
-import Html.Events as Event
-
-
-type alias Model =
-    Int
-
-
-type alias Flags =
-    Maybe Int
-
-
-type Message
-    = Send Int
-    | Receive Int
 
 
 subscriptions : Model -> Sub Message
 subscriptions _ =
     Sub.batch
-        [ Port.receive Receive ]
+        []
 
 
 update : Message -> Model -> ( Model, Cmd Message )
 update message model =
-    case message of
-        Receive x ->
-            ( x, Cmd.none )
-
-        Send x ->
-            ( model, Port.send x )
+    ( model, Cmd.none )
 
 
 init : Flags -> ( Model, Cmd Message )
 init flags =
-    case flags of
-        Nothing ->
-            ( 0, Cmd.none )
-
-        Just x ->
-            ( x, Cmd.none )
-
-
-view : Model -> Html.Html Message
-view model =
-    Html.div []
-        [ Html.button
-            [ Event.onClick (Send model) ]
-            [ Html.text "send" ]
-        , Html.text
-            ("Hello World: " ++ toString model)
-        ]
+    ( 0, Cmd.none )
 
 
 main : Platform.Program Flags Model Message
@@ -60,6 +27,6 @@ main =
     Html.programWithFlags
         { init = init
         , update = update
-        , view = view
+        , view = View.global
         , subscriptions = subscriptions
         }

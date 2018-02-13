@@ -1,3 +1,5 @@
+(** Typed Elm Port *)
+
 open Js
 
 class type ['a] cmd_t = object
