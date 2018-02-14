@@ -2,4 +2,7 @@ module Message exposing (Message(..))
 
 
 type Message
-    = ToBeDone
+    = RecordInputUrl String
+    | Pred
+    | Succ
+    | GoTo

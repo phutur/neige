@@ -5,6 +5,7 @@ type app = App.t Js.t
 type props = {
   width: int
 ; height: int
+; backgroundColor: string
 ; frame: bool
 ; resizable: bool
 ; autoHideMenuBar: bool
@@ -47,6 +48,7 @@ struct
       object%js
         val width = props.width
         val height = props.height
+        val backgroundColor = Js.string props.backgroundColor
         val frame = Js.bool  props.frame
         val resizable = Js.bool props.resizable
         val minWidth = Js.Optdef.option props.minWidth

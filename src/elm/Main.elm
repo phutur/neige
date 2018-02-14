@@ -2,6 +2,7 @@ module Main exposing (main)
 
 import Message exposing (Message(..))
 import Model exposing (Flags, Model)
+import Action
 import View
 import Html
 
@@ -14,12 +15,23 @@ subscriptions _ =
 
 update : Message -> Model -> ( Model, Cmd Message )
 update message model =
-    ( model, Cmd.none )
+    case message of
+        RecordInputUrl value ->
+            Action.recordInputUrl model value
+
+        Pred ->
+            Action.navigate message model
+
+        Succ ->
+            Action.navigate message model
+
+        GoTo ->
+            Action.goTo model
 
 
 init : Flags -> ( Model, Cmd Message )
 init flags =
-    ( 0, Cmd.none )
+    ( Model.init, Cmd.none )
 
 
 main : Platform.Program Flags Model Message
