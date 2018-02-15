@@ -5,7 +5,7 @@ module Neige = Plumbing.Make.Simple(
       Toolkit.Binding.relativize
         "../neige.html"
 
-    let dev_tool = true
+    let dev_tool = false
 
     let props =
       Plumbing.Make.{
@@ -13,8 +13,9 @@ module Neige = Plumbing.Make.Simple(
       ; height = 720
       ; frame = true
       ; resizable = true
+      ; backgroundColor = "#FFF"
       ; autoHideMenuBar = false
-      ; titleBarStyle = None
+      ; titleBarStyle = Some "hidden"
       ; minWidth = None
       ; minHeight = None
       ; icon = None

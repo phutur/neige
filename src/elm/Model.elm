@@ -1,4 +1,4 @@
-module Model exposing (Model, Flags)
+module Model exposing (Model, Flags, init)
 
 
 type alias Flags =
@@ -6,4 +6,10 @@ type alias Flags =
 
 
 type alias Model =
-    Int
+    { urlState : String }
+
+
+init : Model
+init =
+    { urlState = ""
+    }

@@ -14,6 +14,7 @@ end
 class type props = object
   method width : int readonly_prop
   method height: int readonly_prop
+  method backgroundColor: Js.js_string Js.t readonly_prop
   method minWidth : (int Optdef.t) readonly_prop
   method minHeight : (int Optdef.t) readonly_prop
   method frame: bool Js.t readonly_prop

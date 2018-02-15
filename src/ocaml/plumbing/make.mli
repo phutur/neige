@@ -7,6 +7,7 @@ type app = App.t Js.t
 type props = {
   width: int
 ; height: int
+; backgroundColor: string
 ; frame: bool
 ; resizable: bool
 ; autoHideMenuBar: bool
