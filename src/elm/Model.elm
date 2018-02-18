@@ -2,14 +2,14 @@ module Model exposing (Model, Flags, init)
 
 
 type alias Flags =
-    Maybe Int
+    Maybe String
 
 
 type alias Model =
     { urlState : String }
 
 
-init : Model
-init =
-    { urlState = ""
+init : Flags -> Model
+init flag =
+    { urlState = Maybe.withDefault "" flag
     }
