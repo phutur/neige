@@ -31,7 +31,7 @@ update message model =
 
 init : Flags -> ( Model, Cmd Message )
 init flags =
-    ( Model.init, Cmd.none )
+    ( Model.init flags, Cmd.none )
 
 
 main : Platform.Program Flags Model Message

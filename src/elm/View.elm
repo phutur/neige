@@ -22,6 +22,7 @@ global model =
         []
         [ dragBar model
         , toolBar model
+        , outputBar model
         ]
 
 
@@ -69,3 +70,8 @@ inputUrl model =
         , onInput RecordInputUrl
         ]
         []
+
+
+outputBar : Model -> Html Message
+outputBar model =
+    div [ Attr.class "output-bar" ] []
