@@ -12,7 +12,7 @@ let app : (custom_ports Js.t, int Js.Opt.t) Elm.Runtime.app Js.t =
   Elm.Runtime.embed
     "./_dist/neige.elm.js"
     "neige-ui"
-    Elm.Values.nothing
+    (Elm.Values.just (Js.string "http://www.google.fr"))
 
 let alert s =
   Dom_html.window ## alert s
