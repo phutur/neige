@@ -13,12 +13,14 @@ type props = {
 ; icon: string option
 ; minWidth: int option
 ; minHeight: int option
+; vibrancy: string option
 }
 
 module type REQUIREMENT =
 sig
   val entry_point : string
   val dev_tool : bool
+  val hardware_acceleration : bool
   val props : props
 end
 
@@ -49,13 +51,14 @@ struct
         val width = props.width
         val height = props.height
         val backgroundColor = Js.string props.backgroundColor
-        val frame = Js.bool  props.frame
+        val frame = Js.bool props.frame
         val resizable = Js.bool props.resizable
         val minWidth = Js.Optdef.option props.minWidth
         val minHeight = Js.Optdef.option props.minHeight
-        val icon = Js.Optdef.option props.icon
+        val icon = Js.Optdef.option (f props.icon)
         val titleBarStyle = Js.Optdef.option (f props.titleBarStyle)
         val autoHideMenuBar = Js.bool props.autoHideMenuBar
+        val vibrancy = Js.Optdef.option (f props.vibrancy)
       end
 
   let attach_callback name f =
@@ -80,6 +83,10 @@ struct
     then create_window electron app window
 
   let run () =
+    let () =
+      if not (M.hardware_acceleration)
+      then app ## disableHardwareAcceleration ()
+    in
     let _ = attach_callback "ready" create_window in
     let _ = attach_callback "window-all-closed" M.on_all_closed in
     let _ = attach_callback "activate" on_activate in

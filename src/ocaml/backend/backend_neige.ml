@@ -1,11 +1,13 @@
 module Neige = Plumbing.Make.Simple(
   struct
 
+    let hardware_acceleration = true
+
     let entry_point =
       Toolkit.Binding.relativize
         "../neige.html"
 
-    let dev_tool = false
+    let dev_tool = true
 
     let props =
       Plumbing.Make.{
@@ -13,12 +15,13 @@ module Neige = Plumbing.Make.Simple(
       ; height = 720
       ; frame = true
       ; resizable = true
-      ; backgroundColor = "#FFF"
+      ; backgroundColor = "#000"
       ; autoHideMenuBar = false
       ; titleBarStyle = Some "hidden"
       ; minWidth = None
       ; minHeight = None
       ; icon = None
+      ; vibrancy = Some "dark"
       }
   end
   )

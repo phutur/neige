@@ -1,14 +1,14 @@
 module Action
     exposing
-        ( recordInputUrl
+        ( goTo
         , navigate
-        , goTo
+        , recordInputUrl
         )
 
-import Port
-import OCaml
 import Message exposing (Message(..))
 import Model exposing (Model)
+import OCaml
+import Port
 
 
 recordInputUrl : Model -> String -> ( Model, Cmd Message )
@@ -23,4 +23,4 @@ navigate message model =
 
 goTo : Model -> ( Model, Cmd Message )
 goTo model =
-    ( model, Port.gotoUrl ("goto:" ++ model.urlState) )
+    ( model, Port.gotoUrl model.urlState )

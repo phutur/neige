@@ -1,0 +1,5 @@
+(library
+ (name plumbing)
+ (js_of_ocaml (flags :standard))
+ (preprocess (pps js_of_ocaml-ppx))
+ (libraries toolkit))

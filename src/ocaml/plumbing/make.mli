@@ -15,12 +15,14 @@ type props = {
 ; icon: string option
 ; minWidth: int option
 ; minHeight: int option
+; vibrancy: string option
 }
 
 module type REQUIREMENT =
 sig
   val entry_point : string
   val dev_tool : bool
+  val hardware_acceleration : bool
   val props : props
 end
 

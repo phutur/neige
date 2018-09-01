@@ -8,11 +8,13 @@ class type custom_ports = object
   method gotoUrl : Js.js_string Js.t Elm.Port.cmd Js.readonly_prop
 end
 
+let webview = (Js.Unsafe.js_expr "window")##.webview
+
 let app : (custom_ports Js.t, int Js.Opt.t) Elm.Runtime.app Js.t =
   Elm.Runtime.embed
     "./_dist/neige.elm.js"
     "neige-ui"
-    (Elm.Values.just (Js.string "http://www.google.fr"))
+    (Elm.Values.just (Js.string "neige://home"))
 
 let alert s =
   Dom_html.window ## alert s
@@ -25,5 +27,6 @@ let _ =
 
 let _ =
   app##.ports##.gotoUrl ## subscribe (fun x ->
-      alert x
+      Firebug.console ## log (x);
+      webview ## loadURL x
     )

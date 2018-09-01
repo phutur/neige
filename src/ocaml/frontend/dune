@@ -1,0 +1,5 @@
+(executable
+  (name frontend_neige)
+   (js_of_ocaml (flags :standard))
+   (preprocess (pps js_of_ocaml-ppx))
+   (libraries elm))

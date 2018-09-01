@@ -21,7 +21,8 @@ class type props = object
   method resizable: bool Js.t readonly_prop
   method autoHideMenuBar : bool Js.t readonly_prop
   method titleBarStyle : (Js.js_string Js.t Optdef.t) readonly_prop
-  method icon : (string Optdef.t) readonly_prop
+  method icon : (Js.js_string Js.t Optdef.t) readonly_prop
+  method vibrancy : (Js.js_string Js.t Optdef.t) readonly_prop
 end
 
 

@@ -1,19 +1,20 @@
 module View exposing (global)
 
-import Message exposing (Message(..))
-import Model exposing (Flags, Model)
-import Html.Attributes as Attr
-import Html.Events exposing (onInput, onClick)
 import Html
     exposing
         ( Html
-        , div
-        , text
-        , input
-        , header
-        , nav
+        , a
         , button
+        , div
+        , form
+        , header
+        , input
+        , text
         )
+import Html.Attributes as Attr
+import Html.Events exposing (onClick, onInput, onSubmit)
+import Message exposing (Message(..))
+import Model exposing (Flags, Model)
 
 
 global : Model -> Html Message
@@ -35,8 +36,8 @@ dragBar model =
 
 toolBar : Model -> Html Message
 toolBar model =
-    nav
-        [ Attr.class "tool-bar" ]
+    form
+        [ Attr.class "tool-bar", onSubmit GoTo ]
         [ div []
             [ tools model
             , inputUrl model
@@ -48,16 +49,16 @@ toolBar model =
 tools : Model -> Html Message
 tools model =
     div
-        []
-        [ button [ onClick Pred ] [ text "◄" ]
-        , button [ onClick Succ ] [ text "▶" ]
+        [ Attr.class "history-btn" ]
+        [ a [ onClick Pred ] [ text "◄" ]
+        , a [ onClick Succ ] [ text "▶" ]
         ]
 
 
 goButton : Model -> Html Message
 goButton model =
-    div []
-        [ button [ onClick GoTo ] [ text "➡" ]
+    div [ Attr.class "validate-button" ]
+        [ button [] [ text "➡" ]
         ]
 
 

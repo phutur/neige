@@ -2,7 +2,9 @@ html {
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -21,6 +23,12 @@ input:focus {
   outline: none;
 }
 
+#neige-view {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  background-color: white;
+}
 
 body {
   padding: 0;
@@ -33,81 +41,59 @@ body {
   color: #9ea1a5;
 }
 
+.frontpage {
+  color: #fff;
+  background-color: #3a424c;
+}
+
+.frontpage > main {
+  margin: auto;
+}
+
 .title-bar {
   -webkit-user-select: none;
   -webkit-app-region: drag;
-  background-color: #1d2126;
+  background-color: #000;
   height: 24px;
   user-select: none;
-  padding: 4px;
   text-align: center;
-  transition: all 0.5s;
-}
-
-.title-bar:hover {
-  background-color: #000;
 }
 
 .tool-bar {
-  background-color: #3a424c;
-  padding: 6px 4px;
-  border-bottom: 1px solid black;
+  margin: 0;
+  padding: 0;
 }
 
 .tool-bar > div {
   display: flex;
   flex-direction: row;
-  margin: auto;
-}
-
-.tool-bar > div > div > button,
-.url-bar {
-  border: 0px solid red;
-  background-color: #181b1f;
-  color: #FFF;
-  border-radius: 4px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  vertical-align: top;
-  padding-bottom: calc(0.375em - 1px);
-  padding-top: calc(0.375em - 1px);
-  height: 2em;
-}
-
-.tool-bar > div > div > button {
-  margin: 0 2px;
-  transition: all 0.5s;
-  cursor: pointer;
-}
-
-.tool-bar > div > div > button:hover {
-  background-color: #4d97f8;
-  color: #ffffff;
-}
-
-.url-bar {
-  flex: 1;
-  margin: 0 8px;
-  padding-left: 0.75em;
-  padding-right: 0.75em;
-}
-
-
-#neige-view {
-  width: 100%;
-  height: 100%;
-  flex: 1;
-}
-
-.output-bar {
-  background-color: black;
   padding: 4px;
-  color: white;
-  font-size: 65%;
+  justify-content: center;
+  align-items: center;
 }
 
-.output-bar:empty {
+.tool-bar > div > * {
+  margin: 2px;
+}
+
+.tool-bar > div > .url-bar {
+  flex: 1;
+  background-color: #333;
+  border-width: 0px;
+  padding: 6px;
+  color: #fff;
+}
+
+.tool-bar a,
+.tool-bar button {
+  border-width: 0;
+  margin: 2px;
+  color: white;
+  display: inline-block;
+  font-size: 0.7em;
+  background-color: #000;
+}
+
+.tool-bar a {
   display: none;
 }
